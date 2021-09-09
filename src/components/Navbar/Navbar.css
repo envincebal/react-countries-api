@@ -1,0 +1,15 @@
+.navbar{
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  justify-content: space-between;
+  box-shadow: ;
+}
+
+.mode-toggle{
+  display: inline-block;
+}
+
+.fa-moon{
+  width: 16px;
+}
