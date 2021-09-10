@@ -8,7 +8,8 @@ const MainView = () => {
   const [select, setSelect] = useState("");
 
   useEffect(() => {
-    fetch("https://restcountries.eu/rest/v2/all").then((res) => res.json())
+    fetch("https://restcountries.eu/rest/v2/all")
+      .then((res) => res.json())
       .then((res) => setCountries(res));
     );
   }, []);
