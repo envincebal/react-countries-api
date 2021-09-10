@@ -7,18 +7,10 @@ const MainView = () => {
   const [input, setInput] = useState("");
   const [select, setSelect] = useState("");
 
-  const onChangeHandler = (e) => {
-    setInput(e.target.value);
-  };
-
-  const onSelectHandler = (e) => {
-    setSelect(e.target.value);
-  };
-
   useEffect(() => {
-    fetch("https://restcountries.eu/rest/v2/all")
-      .then((res) => res.json())
-      .then((res) => setCountries(res));
+    fetch("https://restcountries.eu/rest/v2/all").then((res) =>
+      setCountries(res.json())
+    );
   }, []);
 
   return (
@@ -28,10 +20,10 @@ const MainView = () => {
           type="text"
           placeholder="Search for a country"
           value={input}
-          onChange={onChangeHandler}
+          onChange={(e) => setInput(e.target.value)}
         />
-        <select onChange={onSelectHandler}>
-          <option>Filter By Region</option>
+        <select onChange={(e) => setSelect(e.target.value)}>
+          <option value="">Filter By Region</option>
           <option value="Africa">Africa</option>
           <option value="Americas">Americas</option>
           <option value="Asia">Asia</option>
@@ -39,13 +31,14 @@ const MainView = () => {
           <option value="Oceana">Oceana</option>
         </select>
       </div>
+
       <div className="countries-grid">
-        {console.log(select)}
         {countries
-          .filter((item) => item.name.toLowerCase().includes(input))
-          .filter((item) => item.region === select)
+          .filter(
+            (item) =>
+              item.name.toLowerCase().includes(input) && item.region === select
+          )
           .map((item, id) => {
-            console.log(item.region)
             return (
               <CountryCard
                 key={id}
