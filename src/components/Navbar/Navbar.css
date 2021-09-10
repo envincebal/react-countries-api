@@ -1,15 +1,22 @@
-.navbar{
-  display: flex;
-  align-items: center;
-  padding: 2rem;
-  justify-content: space-between;
-  box-shadow: ;
+.navbar {
+  box-shadow: 0px 1px 5px -3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 1px 5px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 1px 5px -3px rgba(0, 0, 0, 0.75);
 }
 
-.mode-toggle{
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  max-width: 1330px;
+  padding: 1.5rem 0;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.mode-toggle {
   display: inline-block;
 }
 
-.fa-moon{
+.fa-moon {
   width: 16px;
 }

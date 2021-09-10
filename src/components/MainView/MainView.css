@@ -1,0 +1,19 @@
+.main-container {
+  max-width: 1330px;
+  margin: 0 auto;
+
+}
+
+.filter-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 70px;
+  grid-row-gap: 40px;
+  justify-content: ;
+}
