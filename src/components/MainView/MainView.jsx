@@ -16,9 +16,19 @@ const MainView = () => {
   };
 
   useEffect(() => {
-    fetch("https://restcountries.eu/rest/v2/all")
-      .then((res) => res.json())
-      .then((res) => setCountries(res));
+    if (!localStorage.getItem("countries")) {
+      fetch("https://restcountries.eu/rest/v2/all")
+        .then((res) => res.json())
+        .then((res) => {
+          localStorage.setItem(
+            "countries",
+            JSON.stringify(res)
+          );
+          setCountries(res);
+        });
+    }else{
+      setCountries(JSON.parse(localStorage.getItem("countries")));
+    }
   }, []);
 
   return (
@@ -31,21 +41,20 @@ const MainView = () => {
           onChange={onChangeHandler}
         />
         <select onChange={onSelectHandler}>
-          <option>Filter By Region</option>
+          <option value="">All</option>
           <option value="Africa">Africa</option>
           <option value="Americas">Americas</option>
           <option value="Asia">Asia</option>
           <option value="Europe">Europe</option>
-          <option value="Oceana">Oceana</option>
+          <option value="Oceania">Oceania</option>
+          <option value="Polar">Antarctica</option>
         </select>
       </div>
       <div className="countries-grid">
-        {console.log(select)}
         {countries
           .filter((item) => item.name.toLowerCase().includes(input))
-          .filter((item) => item.region === select)
+          .filter((item) => select === "" || item.region === select)
           .map((item, id) => {
-            console.log(item.region)
             return (
               <CountryCard
                 key={id}
