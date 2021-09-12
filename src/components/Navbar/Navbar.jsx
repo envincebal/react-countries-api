@@ -8,7 +8,7 @@ const Navbar = () => {
         <h2>Where in the world?</h2>
         <div className="mode-toggle">
           <i className="fas fa-moon"></i>
-          <span>Dark Mode</span>
+          <span> Dark Mode</span>
         </div>
       </div>
     </div>

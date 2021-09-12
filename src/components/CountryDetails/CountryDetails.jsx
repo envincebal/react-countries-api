@@ -24,21 +24,20 @@ const CountryDetails = (props) => {
     borders,
   } = countriesInfo;
 
-  borders.forEach(el => {
+  borders.forEach((el) => {
     for (let i = 0; i < countries.length; i++) {
-      if(el === countries[i].cioc){
+      if (el === countries[i].cioc) {
         bordersArr.push(countries[i]);
       }
-      
     }
-    
   });
-
 
   return (
     <div className="details-wrapper">
       <Link to={"/"}>
-        <button className="back-button"><i class="fas fa-long-arrow-alt-left"></i>Back</button>
+        <button className="back-button">
+          <i className="fas fa-long-arrow-alt-left"></i>Back
+        </button>
       </Link>
       <div className="details-container">
         <img className="flag" src={flag} alt={name} />
@@ -47,44 +46,54 @@ const CountryDetails = (props) => {
           <div className="details">
             <div className="details-1">
               <p>
-                <span>Native Name:</span> {nativeName}
+                Native Name: <span>{nativeName}</span>
               </p>
               <p>
-                <span>Population:</span> {population}
+                Population: <span>{population}</span>
               </p>
               <p>
-                <span>Region:</span> {region}
+                Region: <span>{region}</span>
               </p>
               <p>
-                <span>Sub Region:</span> {subregion}
+                Sub Region: <span>{subregion}</span>
               </p>
               <p>
-                <span>Capital:</span> {capital}
+                Capital: <span>{capital}</span>
               </p>
             </div>
             <div className="details-2">
               <p>
-                <span>Top Level Domain:</span> {topLevelDomain}
+                Top Level Domain: <span>{topLevelDomain}</span>
               </p>
               <p>
-                <span>Currencies:</span> {currencies[0].name}
+                Currencies: <span>{currencies[0].name}</span>
               </p>
-              {/* <p><span>Languages:</span> {languages}</p> */}
+
+              <p>
+                Languages:{" "}
+                {languages.map((item, i) => {
+                  if (i === languages.length - 1) {
+                    return <span key={i}>{item.name}</span>;
+                  } else {
+                    return <span key={i}>{item.name + ", "}</span>;
+                  }
+                })}
+              </p>
             </div>
           </div>
-          {console.log(bordersArr)}
           <div className="borders-container">
-            <span>Borders:</span>
+            <span className="border-title">Borders:</span>
             <div className="borders">
-              {bordersArr.map(item => (
-                    <Link
-                    style={{ textDecoration: "none" }}
-                    to={{
-                      pathname: `/${item}`,
-                      state: { name: item },
-                    }}
-                  >
-                <button className="border-btn">{item.name}</button>
+              {bordersArr.map((item, id) => (
+                <Link
+                  key={id}
+                  style={{ textDecoration: "none" }}
+                  to={{
+                    pathname: `/${item.name}`,
+                    state: { name: item.name },
+                  }}
+                >
+                  <button className="border-btn">{item.name}</button>
                 </Link>
               ))}
             </div>

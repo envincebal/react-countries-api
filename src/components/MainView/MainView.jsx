@@ -20,13 +20,10 @@ const MainView = () => {
       fetch("https://restcountries.eu/rest/v2/all")
         .then((res) => res.json())
         .then((res) => {
-          localStorage.setItem(
-            "countries",
-            JSON.stringify(res)
-          );
+          localStorage.setItem("countries", JSON.stringify(res));
           setCountries(res);
         });
-    }else{
+    } else {
       setCountries(JSON.parse(localStorage.getItem("countries")));
     }
   }, []);
@@ -34,12 +31,17 @@ const MainView = () => {
   return (
     <div className="main-container">
       <div className="filter-div">
-        <input
-          type="text"
-          placeholder="Search for a country"
-          value={input}
-          onChange={onChangeHandler}
-        />
+        <div className="search-div">
+          <i className="fas fa-search"></i>
+          <input
+
+            type="text"
+            placeholder="Search for a country"
+            value={input}
+            onChange={onChangeHandler}
+          />
+        </div>
+
         <select onChange={onSelectHandler}>
           <option value="">All</option>
           <option value="Africa">Africa</option>

@@ -10,3 +10,17 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   background-color: #fafafa;
 }
+
+span {
+  font-weight: 400;
+}
+
+p {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+button,
+input, select{
+  border-radius: 5px;
+}

@@ -1,10 +1,4 @@
-span {
-  font-weight: 700;
-}
 
-p {
-  margin-bottom: 10px;
-}
 
 .details-wrapper {
   padding: 0 10%;
@@ -58,12 +52,52 @@ p {
   align-items: center;
 }
 
+.border-title{
+  font-weight: 700;
+}
+
 .border-btn {
   -webkit-box-shadow: 0px 0px 5px -2px #000000;
   box-shadow: 0px 0px 5px -2px #000000;
   background-color: #fff;
   border: none;
-  margin: 10px 5px;
+  margin: 5px;
   padding: 5px 10px;
   cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .country-name,
+  .details{
+    margin-bottom: 20px;
+  }
+
+  .details {
+    display: block;
+  }
+  
+  .details-1,
+  .details-2 {
+    width: 100%;
+  }
+
+  .borders-container {
+    display: block;
+    align-items: center;
+  }
+}
+
+@media (max-width: 1000px) {
+  .details-container {
+    display: block;
+  }
+
+  .flag,
+  .details-div{
+    width: 100%;
+  }
+
+  .flag{
+    margin-bottom: 30px;
+  }
 }
