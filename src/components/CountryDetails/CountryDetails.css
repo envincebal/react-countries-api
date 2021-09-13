@@ -1,18 +1,11 @@
-
-
 .details-wrapper {
   padding: 0 10%;
   margin: 0 auto;
 }
 
 .back-button {
-  background-color: #fff;
-  border: none;
   padding: 10px 20px;
   margin: 50px 0;
-  -webkit-box-shadow: 0px 0px 5px -2px #000000;
-  box-shadow: 0px 0px 5px -2px #000000;
-  cursor: pointer;
 }
 
 .fa-long-arrow-alt-left {
@@ -30,6 +23,8 @@
 }
 
 .flag {
+  -webkit-box-shadow: 0px 0px 5px -1px #000000;
+  box-shadow: 0px 0px 5px -1px #000000;
   margin-right: 50px;
 }
 
@@ -52,30 +47,26 @@
   align-items: center;
 }
 
-.border-title{
+.border-title {
   font-weight: 700;
 }
 
 .border-btn {
-  -webkit-box-shadow: 0px 0px 5px -2px #000000;
-  box-shadow: 0px 0px 5px -2px #000000;
-  background-color: #fff;
-  border: none;
   margin: 5px;
   padding: 5px 10px;
-  cursor: pointer;
 }
 
 @media (max-width: 1200px) {
+
   .country-name,
-  .details{
+  .details {
     margin-bottom: 20px;
   }
 
   .details {
     display: block;
   }
-  
+
   .details-1,
   .details-2 {
     width: 100%;
@@ -93,11 +84,11 @@
   }
 
   .flag,
-  .details-div{
+  .details-div {
     width: 100%;
   }
 
-  .flag{
+  .flag {
     margin-bottom: 30px;
   }
 }

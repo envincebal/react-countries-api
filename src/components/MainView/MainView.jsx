@@ -34,7 +34,7 @@ const MainView = () => {
         <div className="search-div">
           <i className="fas fa-search"></i>
           <input
-
+            className="nav-input"
             type="text"
             placeholder="Search for a country"
             value={input}
@@ -42,7 +42,7 @@ const MainView = () => {
           />
         </div>
 
-        <select onChange={onSelectHandler}>
+        <select className="nav-input" onChange={onSelectHandler}>
           <option value="">All</option>
           <option value="Africa">Africa</option>
           <option value="Americas">Americas</option>

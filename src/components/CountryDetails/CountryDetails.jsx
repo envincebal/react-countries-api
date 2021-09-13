@@ -35,7 +35,7 @@ const CountryDetails = (props) => {
   return (
     <div className="details-wrapper">
       <Link to={"/"}>
-        <button className="back-button">
+        <button className="btn back-button">
           <i className="fas fa-long-arrow-alt-left"></i>Back
         </button>
       </Link>
@@ -49,7 +49,7 @@ const CountryDetails = (props) => {
                 Native Name: <span>{nativeName}</span>
               </p>
               <p>
-                Population: <span>{population}</span>
+                Population: <span>{population.toLocaleString()}</span>
               </p>
               <p>
                 Region: <span>{region}</span>
@@ -93,7 +93,7 @@ const CountryDetails = (props) => {
                     state: { name: item.name },
                   }}
                 >
-                  <button className="border-btn">{item.name}</button>
+                  <button className="btn border-btn">{item.name}</button>
                 </Link>
               ))}
             </div>
