@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
 import MainView from "./components/MainView/MainView";
@@ -18,13 +18,13 @@ function App() {
 
   return (
     <div className={`App ${darkMode ? "dark-mode" : ""}`}>
-      <BrowserRouter>
+      <Router>
         <Navbar toggleMode={toggleMode} />
         <Switch>
           <Route exact path="/" component={MainView} />
-          <Route exact path="/:details" render={() => <CountryDetails />} />
+          <Route path="/:details" render={() => <CountryDetails />} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
