@@ -4,9 +4,11 @@ import "./CountryDetails.css";
 
 const CountryDetails = (props) => {
   const location = useLocation();
+  localStorage.setItem("location", JSON.stringify(location));
+  const storedLocation = JSON.parse(localStorage.getItem("location"));
   const countries = JSON.parse(localStorage.getItem("countries"));
   const countriesInfo = countries.find(
-    (item) => item.name === location.state.name
+    (item) => item.name === storedLocation.pathname.slice(1)
   );
   const bordersArr = [];
 
@@ -44,6 +46,7 @@ const CountryDetails = (props) => {
         <div className="details-div">
           <h2 className="country-name">{name}</h2>
           <div className="details">
+          {console.log(location)}
             <div className="details-1">
               <p>
                 Native Name: <span>{nativeName}</span>
