@@ -26,13 +26,15 @@ const CountryDetails = (props) => {
     borders,
   } = countriesInfo;
 
-  borders.forEach((el) => {
-    for (let i = 0; i < countries.length; i++) {
-      if (el === countries[i].cioc) {
-        bordersArr.push(countries[i]);
+  if (borders) {
+    borders.forEach((el) => {
+      for (let i = 0; i < countries.length; i++) {
+        if (el === countries[i].cioc) {
+          bordersArr.push(countries[i]);
+        }
       }
-    }
-  });
+    });
+  }
 
   return (
     <div className="details-wrapper">
@@ -46,7 +48,6 @@ const CountryDetails = (props) => {
         <div className="details-div">
           <h2 className="country-name">{name}</h2>
           <div className="details">
-          {console.log(location)}
             <div className="details-1">
               <p>
                 Native Name: <span>{nativeName}</span>
