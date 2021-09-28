@@ -17,7 +17,7 @@ const MainView = () => {
 
   useEffect(() => {
     if (!localStorage.getItem("countries")) {
-      fetch("https://restcountries.com/v2/all")
+      fetch("https://cors.bridged.cc/https://restcountries.com/v2/all")
         .then((res) => res.json())
         .then((res) => {
           localStorage.setItem("countries", JSON.stringify(res));
