@@ -17,15 +17,15 @@ function App() {
   };
 
   return (
-    <div className={`App ${darkMode ? "dark-mode" : ""}`}>
-      <Router>
+    <Router basename="/">
+      <div className={`App ${darkMode ? "dark-mode" : ""}`}>
         <Navbar toggleMode={toggleMode} />
         <Switch>
           <Route exact path="/" component={MainView} />
-          <Route path="/:details" render={() => <CountryDetails />} />
+          <Route path="/:details" component={CountryDetails} />
         </Switch>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 
