@@ -16,15 +16,15 @@ const MainView = () => {
   };
 
   useEffect(() => {
-    if (!localStorage.getItem("countries")) {
+    if (!sessionStorage.getItem("countries")) {
       fetch("https://cors.bridged.cc/https://restcountries.com/v2/all")
         .then((res) => res.json())
         .then((res) => {
-          localStorage.setItem("countries", JSON.stringify(res));
+          sessionStorage.setItem("countries", JSON.stringify(res));
           setCountries(res);
         });
     } else {
-      setCountries(JSON.parse(localStorage.getItem("countries")));
+      setCountries(JSON.parse(sessionStorage.getItem("countries")));
     }
   }, []);
 
@@ -57,10 +57,11 @@ const MainView = () => {
           .filter((item) => item.name.toLowerCase().includes(input))
           .filter((item) => select === "" || item.region === select)
           .map((item, id) => {
+            console.log(item.flag)
             return (
               <CountryCard
                 key={id}
-                flag={item.flag}
+                flag={item.flags.png}
                 name={item.name}
                 population={item.population}
                 region={item.region}

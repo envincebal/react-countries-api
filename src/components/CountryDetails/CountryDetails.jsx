@@ -4,9 +4,9 @@ import "./CountryDetails.css";
 
 const CountryDetails = (props) => {
   const location = useLocation();
-  localStorage.setItem("location", JSON.stringify(location));
-  const storedLocation = JSON.parse(localStorage.getItem("location"));
-  const countries = JSON.parse(localStorage.getItem("countries"));
+  sessionStorage.setItem("location", JSON.stringify(location));
+  const storedLocation = JSON.parse(sessionStorage.getItem("location"));
+  const countries = JSON.parse(sessionStorage.getItem("countries"));
   const countriesInfo = countries.find(
     (item) => item.name === storedLocation.pathname.slice(1)
   );
