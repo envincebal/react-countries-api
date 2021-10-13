@@ -17,7 +17,7 @@ const MainView = () => {
 
   useEffect(() => {
     if (!sessionStorage.getItem("countries")) {
-      fetch("https://cors.bridged.cc/https://restcountries.com/v2/all")
+      fetch("https://restcountries.com/v2/all")
         .then((res) => res.json())
         .then((res) => {
           sessionStorage.setItem("countries", JSON.stringify(res));
@@ -57,7 +57,6 @@ const MainView = () => {
           .filter((item) => item.name.toLowerCase().includes(input))
           .filter((item) => select === "" || item.region === select)
           .map((item, id) => {
-            console.log(item.flag)
             return (
               <CountryCard
                 key={id}
