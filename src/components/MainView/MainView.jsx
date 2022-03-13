@@ -26,6 +26,8 @@ const MainView = () => {
     } else {
       setCountries(JSON.parse(sessionStorage.getItem("countries")));
     }
+
+
   }, []);
 
   return (
@@ -54,7 +56,7 @@ const MainView = () => {
       </div>
       <div className="countries-grid">
         {countries
-          .filter((item) => item.name.toLowerCase().includes(input))
+          .filter((item) => item.name.toLowerCase().includes(input.toLowerCase()))
           .filter((item) => select === "" || item.region === select)
           .map((item, id) => {
             return (
