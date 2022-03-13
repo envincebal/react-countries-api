@@ -34,7 +34,7 @@ const MainView = () => {
         <div className="search-div">
           <i className="fas fa-search"></i>
           <input
-            className="nav-input"
+            className="search-bar nav-input"
             type="text"
             placeholder="Search for a country"
             value={input}

@@ -26,6 +26,7 @@
   -webkit-box-shadow: 0px 0px 5px -1px #000000;
   box-shadow: 0px 0px 5px -1px #000000;
   margin-right: 50px;
+  border-radius: 5px;
 }
 
 .country-name {
@@ -81,6 +82,7 @@
 @media (max-width: 1000px) {
   .details-container {
     display: block;
+    margin-bottom: 50px;
   }
 
   .flag,
@@ -90,5 +92,18 @@
 
   .flag {
     margin-bottom: 30px;
+  }
+
+  .borders-container {
+    display: initial;
+  }
+
+  .borders {
+    margin-top: 10px;
+  }
+
+  .border-btn {
+    margin: 10px 0;
+    width: 100%;
   }
 }

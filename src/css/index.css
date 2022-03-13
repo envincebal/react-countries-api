@@ -6,8 +6,6 @@
   box-sizing: border-box;
 }
 
-
-
 span {
   font-weight: 400;
 }
@@ -32,8 +30,7 @@ button {
 }
 
 
-
-body{
+body {
   font-family: 'Nunito Sans', sans-serif;
   background-color: #fafafa;
   color: #111517;
@@ -54,6 +51,8 @@ body{
 .dark-mode .country-info {
   background-color: #2b3945;
   color: #fff;
+  border-top: 1px solid #2b3945;
+  border-radius: 0 0 5px 5px;
 }
 
 .dark-mode .btn {
