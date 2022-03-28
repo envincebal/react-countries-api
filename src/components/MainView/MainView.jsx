@@ -15,19 +15,20 @@ const MainView = () => {
     setSelect(e.target.value);
   };
 
+  const getData = async () => {
+    const response = await fetch("https://restcountries.com/v2/all");
+    const countriesList = await response.json();
+
+    sessionStorage.setItem("countries", JSON.stringify(countriesList));
+    setCountries(countriesList);
+  };
+
   useEffect(() => {
     if (!sessionStorage.getItem("countries")) {
-      fetch("https://restcountries.com/v2/all")
-        .then((res) => res.json())
-        .then((res) => {
-          sessionStorage.setItem("countries", JSON.stringify(res));
-          setCountries(res);
-        });
+      getData();
     } else {
       setCountries(JSON.parse(sessionStorage.getItem("countries")));
     }
-
-
   }, []);
 
   return (
@@ -56,7 +57,9 @@ const MainView = () => {
       </div>
       <div className="countries-grid">
         {countries
-          .filter((item) => item.name.toLowerCase().includes(input.toLowerCase()))
+          .filter((item) =>
+            item.name.toLowerCase().includes(input.toLowerCase())
+          )
           .filter((item) => select === "" || item.region === select)
           .map((item, id) => {
             return (
