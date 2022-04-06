@@ -18,9 +18,9 @@ const MainView = () => {
 
   useEffect(() => {
     if (!sessionStorage.getItem("countries")) {
-      setLoading(true);
       fetch("https://restcountries.com/v2/all")
         .then((res) => {
+          setLoading(true);
           return res.json();
         })
         .then((res) => {
