@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import CountryCard from "../CountryCard/CountryCard";
-import Spinner from "../../img/spinner.gif";
 import "./MainView.css";
 
 const MainView = () => {
   const [countries, setCountries] = useState([]);
   const [input, setInput] = useState("");
   const [select, setSelect] = useState("");
-  const [loading, setLoading] = useState(false);
+
   const onChangeHandler = (e) => {
     setInput(e.target.value);
   };
@@ -16,18 +15,21 @@ const MainView = () => {
     setSelect(e.target.value);
   };
 
+  const getData = async () => {
+    try {
+      const response = await fetch("https://restcountries.com/v2/all");
+      const countriesList = await response.json();
+
+      sessionStorage.setItem("countries", JSON.stringify(countriesList));
+      setCountries(countriesList);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     if (!sessionStorage.getItem("countries")) {
-      fetch("https://restcountries.com/v2/all")
-        .then((res) => {
-          setLoading(true);
-          return res.json();
-        })
-        .then((res) => {
-          setLoading(false);
-          sessionStorage.setItem("countries", JSON.stringify(res));
-          setCountries(res);
-        });
+      getData();
     } else {
       setCountries(JSON.parse(sessionStorage.getItem("countries")));
     }
@@ -57,32 +59,24 @@ const MainView = () => {
           <option value="Polar">Antarctica</option>
         </select>
       </div>
-      <div>
-        {loading ? (
-          <div className="loading-container">
-            <img className="spinner" src={Spinner} alt="spinner" />
-          </div>
-        ) : (
-          <div className="countries-grid">
-            {countries
-              .filter((item) =>
-                item.name.toLowerCase().includes(input.toLowerCase())
-              )
-              .filter((item) => select === "" || item.region === select)
-              .map((item, id) => {
-                return (
-                  <CountryCard
-                    key={id}
-                    flag={item.flags.png}
-                    name={item.name}
-                    population={item.population}
-                    region={item.region}
-                    capital={item.capital}
-                  />
-                );
-              })}
-          </div>
-        )}
+      <div className="countries-grid">
+        {countries
+          .filter((item) =>
+            item.name.toLowerCase().includes(input.toLowerCase())
+          )
+          .filter((item) => select === "" || item.region === select)
+          .map((item, id) => {
+            return (
+              <CountryCard
+                key={id}
+                flag={item.flags.png}
+                name={item.name}
+                population={item.population}
+                region={item.region}
+                capital={item.capital}
+              />
+            );
+          })}
       </div>
     </div>
   );
