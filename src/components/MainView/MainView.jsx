@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CountryCard from "../CountryCard/CountryCard";
+import Spinner from "../../img/spinner.gif";
 import "./MainView.css";
 
 const MainView = () => {
@@ -59,24 +60,30 @@ const MainView = () => {
           <option value="Polar">Antarctica</option>
         </select>
       </div>
-      <div className="countries-grid">
-        {countries
-          .filter((item) =>
-            item.name.toLowerCase().includes(input.toLowerCase())
-          )
-          .filter((item) => select === "" || item.region === select)
-          .map((item, id) => {
-            return (
-              <CountryCard
-                key={id}
-                flag={item.flags.png}
-                name={item.name}
-                population={item.population}
-                region={item.region}
-                capital={item.capital}
-              />
-            );
-          })}
+      <div className="countries-container">
+        {countries.length === 0 ? (
+          <img src={Spinner} alt="loading" className="spinner" />
+        ) : (
+          <div className="countries-grid">
+            {countries
+              .filter((item) =>
+                item.name.toLowerCase().includes(input.toLowerCase())
+              )
+              .filter((item) => select === "" || item.region === select)
+              .map((item, id) => {
+                return (
+                  <CountryCard
+                    key={id}
+                    flag={item.flags.png}
+                    name={item.name}
+                    population={item.population}
+                    region={item.region}
+                    capital={item.capital}
+                  />
+                );
+              })}
+          </div>
+        )}
       </div>
     </div>
   );
